@@ -1,2 +1,17 @@
-*.class
-*.log
+*~
+.#*
+.*.swp
+.DS_Store
+.cache
+
+# eclipse, intellij
+.classpath
+.project
+.settings
+*.iml
+*.ipr
+*.iws
+.idea
+
+# sbt's target directories
+target
