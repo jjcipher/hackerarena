@@ -8,7 +8,9 @@ lazy val commonSettings = Seq(
     "-language:_",
     "-encoding", "UTF-8"
   ),
-  libraryDependencies ++= Seq()
+  libraryDependencies ++= Seq(
+    "org.scalatest" % "scalatest_2.12" % "3.0.4" % "test"
+  )
 )
 
 lazy val root = (project in file("."))
