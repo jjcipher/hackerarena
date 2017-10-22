@@ -1,11 +1,8 @@
 /**
   * URL: https://www.hackerrank.com/challenges/lonely-integer
-  *
-  * Consider an array of  integers, , where all but one of the integers occur in pairs.
-  * Given , find and print the unique element.
   */
 def lonelyinteger(a: Array[Int]): Int =  {
-  //a.groupBy(identity).toList.filter(_._2.size != 2).head._1
+  // Wrapping in a method is too much trouble...
   a.reduce(_^_)
 }
 
