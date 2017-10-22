@@ -35,6 +35,7 @@ lazy val bench = (project in file("bench"))
   .enablePlugins(JmhPlugin)
 
 lazy val practice = (project in file("practice"))
+  .dependsOn(library)
   .settings(commonSettings)
   .settings(
     name := "practice"
