@@ -47,6 +47,8 @@ def matchWeight(list: List[(Int, Int)], value: Int): Boolean = {
   false
 }
 
+
+// Test Cases
 val us = uniformSubstrings("abccddda") // List(a, b, cc, ddd, a)
 val usv = weighting(us) // List((1,1), (2,1), (3,2), (4,3), (1,1))
 

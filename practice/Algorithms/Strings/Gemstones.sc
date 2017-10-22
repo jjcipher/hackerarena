@@ -14,7 +14,7 @@ def findGemstones(lists: List[String]): List[Char] = {
 }
 
 /**
-  * Version 2
+  * Version 2. Starting from the frist string, retain only the intersect string.
   */
 def findGemstones2(lists: List[String]): String = {
   lists.reduce(_ intersect _)
