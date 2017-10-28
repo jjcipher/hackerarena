@@ -14,7 +14,7 @@ lazy val commonSettings = Seq(
 )
 
 lazy val root = (project in file("."))
-  .aggregate(library, bench)
+  .aggregate(library, bench, practice, euler)
   .settings(
     commonSettings
   )
