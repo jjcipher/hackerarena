@@ -8,5 +8,5 @@ def solution(array: Array[Int]): Unit = {
 }
 
 // Test Cases
-solution(Array(4,6,5,3,3,1))
-solution(Array(1,2,2,3,1,2))
+solution(Array(4,6,5,3,3,1)) // 3
+solution(Array(1,2,2,3,1,2)) // 5

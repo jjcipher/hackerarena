@@ -39,11 +39,11 @@ implicit class MatrixHelper[A](arr: Array[Array[A]]) {
 
 // Test Cases
 val s1 = Array(Array(4,8,2), Array(4,5,7), Array(6,1,6))
-minCost(s1)
+assert (minCost(s1) == 4)
 
 val s2 = Array(Array(4,9,2), Array(3,5,7), Array(8,1,5))
-minCost(s2)
+assert (minCost(s2) == 1)
 
 val s3 = Array(Array(6,1,2), Array(7,2,6), Array(5,6,2))
-minCost(s3)
+assert (minCost(s3) == 18)
 
