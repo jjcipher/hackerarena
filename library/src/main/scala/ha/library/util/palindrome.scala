@@ -1,7 +1,7 @@
 package ha.library.util
 
 object palindrome {
-  def isPalindrome[A](list: List[A]): Boolean = list == list.reverse
+  def isPalindrome[A](seq: Seq[A]): Boolean = seq == seq.reverse
 
   def split(n: Long): List[Int] = {
     if (n == 0) List(0)
@@ -9,12 +9,5 @@ object palindrome {
       Stream.iterate(n)(_ / 10).takeWhile(_ != 0).map(i => (i % 10).toInt).toList.reverse
   }
 
-  implicit class StringChecker(s: String) {
-    def isPalindrome: Boolean = palindrome.isPalindrome(s.toList)
-  }
-
-  implicit class LongChecker(n: Long) {
-    def isPalindrome: Boolean = palindrome.isPalindrome(split(n))
-  }
-
+  def isPalindrome(n: Long): Boolean = palindrome.isPalindrome(split(n))
 }
