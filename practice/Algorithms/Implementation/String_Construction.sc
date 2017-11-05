@@ -15,7 +15,8 @@ def stringConstruction(s: String): Int =  {
 }
 
 /**
-  * Version 2.
+  * Version 2. This passed all Test Cases.
+  * Only compare to the chars that have been discovered.
   */
 def stringConstruction2(s: String): Int =  {
   val p = new StringBuilder()
