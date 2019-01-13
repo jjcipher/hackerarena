@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 /**
   * URL: https://www.hackerrank.com/challenges/alternating-characters
   */
@@ -6,16 +8,18 @@
   * is same as the previous character.
   */
 def minSteps(str: String): Int = {
-  var cnt = 0
-  for (i <- 1 until str.length) {
-    if (str.charAt(i) == str.charAt(i - 1)) cnt += 1
-  }
-  cnt
-}
+  @tailrec
+  def count(c: Char, s: String, acc: Int): Int =
+    if (s.nonEmpty) {
+      if (c == s.head) count(c, s.tail, acc + 1)
+      else count(s.head, s.tail, acc)
+    } else acc
 
+  count(str.head, str.tail, 0)
+}
 // Test Cases
-minSteps("AAAA")
-minSteps("BBBBB")
-minSteps("ABABABAB")
-minSteps("BABABA")
-minSteps("AAABBB")
+assert(minSteps("AAAA") == 3)
+assert(minSteps("BBBBB") == 4)
+assert(minSteps("ABABABAB") == 0)
+assert(minSteps("BABABA") == 0)
+assert(minSteps("AAABBB") == 4)
