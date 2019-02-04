@@ -14,7 +14,7 @@ lazy val commonSettings = Seq(
 )
 
 lazy val root = (project in file("."))
-  .aggregate(library, bench, practice, euler)
+  .aggregate(library, bench, hackerrank, euler)
   .settings(
     commonSettings
   )
@@ -34,18 +34,16 @@ lazy val bench = (project in file("bench"))
   ).dependsOn(library)
   .enablePlugins(JmhPlugin)
 
-lazy val practice = (project in file("practice"))
+lazy val hackerrank = (project in file("hackerrank"))
   .dependsOn(library)
   .settings(commonSettings)
   .settings(
-    name := "practice"
+    name := "hackerrank"
   ).dependsOn(library)
-  .enablePlugins(JmhPlugin)
 
-lazy val euler = project.in(file("compete") / "euler")
+lazy val euler = project.in(file("euler"))
   .dependsOn(library)
+  .settings(commonSettings)
   .settings(
-    commonSettings,
-    unmanagedSourceDirectories in Compile := Nil,
-    unmanagedSourceDirectories in Test := List(baseDirectory.value)
-  )
+    name := "euler"
+  ).dependsOn(library)
