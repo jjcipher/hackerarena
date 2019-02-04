@@ -15,6 +15,13 @@ object sequences {
   lazy val fibs: Stream[BigInt] = BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map{n => n._1 + n._2}
 
   /**
+    * Pascal's Triangles
+    */
+  lazy val pascalTriangles: Stream[Vector[BigInt]] =
+    Vector(BigInt(1)) #:: Stream.iterate(Vector(BigInt(1), BigInt(1)))(BigInt(1) +: _.sliding(2).map(_.sum)
+      .toVector :+ BigInt(1))
+
+  /**
     * The n-th Triangle numbers
     *
     * alternative:
