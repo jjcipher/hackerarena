@@ -1,7 +1,6 @@
 package ha.library.math
 
 object arithmetic {
-
   def gcd(a: BigInt, b: BigInt): BigInt = if (b == 0) a else gcd(b, a % b)
 
   def gcd(nums: Iterable[BigInt]): BigInt = nums.reduce(gcd)
@@ -10,9 +9,8 @@ object arithmetic {
 
   def lcm(nums: Iterable[BigInt]): BigInt = nums.reduce(lcm)
 
-
   /**
-    * List the factors of the given integer ascendingly.
+    * List the factors of the given integer, sorted in ascending order.
     * ref: http://louisbotterill.blogspot.com/2009/03/prime-factorization-comparison-between.html
     *
     * @return a List of the prime factors of the given integer.
@@ -35,7 +33,7 @@ object arithmetic {
   }
 
   /**
-    * List the divisors of the given integer ascendingly.
+    * List the divisors of the given integer, sorted in ascending order.
     *
     * alternative:
     *   def divisors(n: Int): Seq[Int] = for (i <- 1 to n / 2; if (n % i == 0)) yield i
@@ -57,6 +55,39 @@ object arithmetic {
     }
     result
   }
+
+  /**
+    * Find how many digits of the given number.
+    */
+  def digits(number: Long): Int = {
+    var length: Int = 0
+    var temp: Long = 1L
+    while ( temp <= number) {
+      length += 1
+      temp *= 10
+    }
+    length
+  }
+
+  def digits(number: BigInt): Int = number.toString.size
+
+  /**
+    * Find the sum of the digits of the given number.
+    */
+  def digitSum(number: BigInt): BigInt = {
+    var n = number
+    var result: BigInt = 0
+    while (n > 0) {
+      result += n % 10
+      n = n / 10
+    }
+    result
+  }
+
+  /**
+    * Concatenate the two input numbers.
+    */
+  def concatenate(n1: BigInt, n2: BigInt): BigInt = n1 * BigInt(10).pow(digits(n2)) + n2
 
   def isPrime(n: Int): Boolean = (2 to math.sqrt(n).toInt) forall (x => n % x != 0)
 

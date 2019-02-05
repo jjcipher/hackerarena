@@ -40,6 +40,25 @@ class arithmeticSpec extends WordSpec with GivenWhenThen with BeforeAndAfter {
       assert(reversed(1230) == 321)
     }
 
+    "digits(BigInt)" in {
+      assert(digits(1234) == 4)
+      assert(digits(BigInt("123456789012345678901234567890")) == 30)
+    }
+
+    "digitSum(Long)" in {
+      assert(digitSum(1234567890123456789L) == 90)
+    }
+
+    "digitSum(BigInt)" in {
+      assert(digitSum(BigInt("123456789012345678901234567890")) == 135)
+    }
+
+    "concatenate(BigInt, BigInt)" in {
+      assert(concatenate(1234, 5678) == 12345678)
+      assert(concatenate(BigInt("12345678901234567890"), BigInt("12345678901234567890")) == BigInt
+      ("1234567890123456789012345678901234567890"))
+    }
+
     "isPrime(Int)" in {
       assert(isPrime(1297) == true)
       assert(isPrime(1299) == false)
