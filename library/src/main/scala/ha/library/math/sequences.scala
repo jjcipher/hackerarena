@@ -12,22 +12,29 @@ object sequences {
   /**
     * Fibonacci numbers
     */
-  lazy val fibs: Stream[BigInt] = BigInt(0) #:: BigInt(1) #:: fibs.zip(fibs.tail).map{n => n._1 + n._2}
+  lazy val fibs: Stream[BigInt] = BigInt(0) #:: BigInt(1) #::
+    fibs.zip(fibs.tail).map { n => n._1 + n._2 }
 
   /**
     * Pascal's Triangles
     */
   lazy val pascalTriangles: Stream[Vector[BigInt]] =
-    Vector(BigInt(1)) #:: Stream.iterate(Vector(BigInt(1), BigInt(1)))(BigInt(1) +: _.sliding(2).map(_.sum)
-      .toVector :+ BigInt(1))
+    Vector(BigInt(1)) #:: Stream.iterate(Vector(BigInt(1), BigInt(1)))(BigInt(1) +:
+      _.sliding(2).map(_.sum).toVector :+ BigInt(1))
+
+  /**
+    * Prime numbers
+    */
+  lazy val primes: Stream[Int] = 2 #:: Stream.from(3).filter {
+    n => !primes.takeWhile(_ <= math.sqrt(n)).exists(n % _ == 0) }
 
   /**
     * The n-th Triangle numbers
     *
     * alternative:
-    *   private lazy val series: Stream[Int] = 0 #::
+    * private lazy val series: Stream[Int] = 0 #::
     *     series.zip(Stream.from(1)).map(n => n._1 + n._2)
-    *   lazy val triangles: Stream[Int] = series.drop(1)
+    * lazy val triangles: Stream[Int] = series.drop(1)
     */
   def triangleNumbers(n: Int): Int = n * (n + 1) / 2
 

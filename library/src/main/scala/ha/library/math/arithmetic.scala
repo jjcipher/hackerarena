@@ -41,7 +41,6 @@ object arithmetic {
   def divisors(x: Int): Seq[Int] = (1 to scala.math.sqrt(x).toInt)
     .filter(x % _ == 0).flatMap(n => List(n, x/n).distinct).sorted
 
-
   /**
     * Reverses the input Int. For example, reversed(123) => 321; reversed(120) => 21
     */
@@ -87,9 +86,21 @@ object arithmetic {
   /**
     * Concatenate the two input numbers.
     */
-  def concatenate(n1: BigInt, n2: BigInt): BigInt = n1 * BigInt(10).pow(digits(n2)) + n2
+  def concat(n1: Int, n2: Int): Int = s"$n1$n2".toInt
+  def concat(n1: BigInt, n2: BigInt): BigInt = n1 * BigInt(10).pow(digits(n2)) + n2
+
+  def sqrt(number: BigInt): BigInt = {
+    def next(n: BigInt, i: BigInt): BigInt = (n + i / n) >> 1
+    val one = BigInt(1)
+    val n = one
+    val n1 = next(n, number)
+    def sqrtHelper(n: BigInt, n1: BigInt): BigInt = if ((n1 - n).abs <= one) List(n1,n).max else sqrtHelper(n1, next(n1, number))
+    sqrtHelper(n, n1)
+  }
 
   def isPrime(n: Int): Boolean = (2 to math.sqrt(n).toInt) forall (x => n % x != 0)
+
+  //def isPrime(n: BigInt): Boolean = (2 to sqrt(n).toInt) forall (x => n % x != 0)
 
   def memoizedIsPrime: Int => Boolean = {
     val cache = collection.mutable.Map.empty[Int, Boolean]

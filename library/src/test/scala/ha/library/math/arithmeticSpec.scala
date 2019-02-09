@@ -53,9 +53,12 @@ class arithmeticSpec extends WordSpec with GivenWhenThen with BeforeAndAfter {
       assert(digitSum(BigInt("123456789012345678901234567890")) == 135)
     }
 
-    "concatenate(BigInt, BigInt)" in {
-      assert(concatenate(1234, 5678) == 12345678)
-      assert(concatenate(BigInt("12345678901234567890"), BigInt("12345678901234567890")) == BigInt
+    "concat(Int, Int)" in {
+      assert(concat(1234, 5678) == 12345678)
+    }
+
+    "concat(BigInt, BigInt)" in {
+      assert(concat(BigInt("12345678901234567890"), BigInt("12345678901234567890")) == BigInt
       ("1234567890123456789012345678901234567890"))
     }
 
